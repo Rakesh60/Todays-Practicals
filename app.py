@@ -1,24 +1,24 @@
-from flask import Flask
-
-
-from flask import render_template
-
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-
-# @app.route('/')
-# def index():
-#     return "Hello World"
-
-
+# Route 1: Home Page
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return "Welcome to the Home Page!"
 
+# Route 2: About Page
+@app.route('/about')
+def about():
+    return "This is the About Page. Learn more about us here."
 
-
+# Route 3: Contact Page
+@app.route('/contact')
+def contact():
+    return jsonify({
+        "email": "contact@example.com",
+        "phone": "+123-456-7890"
+    })
 
 if __name__ == '__main__':
-    app.run()
-    # app.run(host='0.0.0.0')
+    app.run(debug=True)
